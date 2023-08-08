@@ -1,0 +1,4 @@
+.venv/
+src/rv_book_*.tei
+fig/*
+data/*
