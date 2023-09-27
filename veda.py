@@ -357,6 +357,16 @@ class VedaMetronome():
         scorer = met.scoring.Scorer()
         # metronome is also the default column name
         df1 = scorer.dist_matrix(df, col='metronome')
+
+        data_dir = os.path.join(self.base_dir, "data")
+        if not os.path.exists(data_dir):
+            user_input = input("Create 'data' directory? (Y/n):")
+            if user_input.lower() == 'y' or user_input == '':
+                os.makedirs(data_dir)
+                print(f"Directory 'data' has been created.")
+            else:
+                print(f"Creation of directory 'data' has been canceled.")
+
         basic_scoring_df_path = os.path.join(self.base_dir, "data", f"basic_{self.branch_number}.csv")
         df1.to_csv(basic_scoring_df_path, index=False)
         print(f"Saved {os.path.basename(basic_scoring_df_path)}")
@@ -502,6 +512,15 @@ class VedaMetronome():
             i+=1
 
         plt.axis('off')  # 軸を非表示にする
+
+        fig_dir = os.path.join(self.base_dir, "fig")
+        if not os.path.exists(fig_dir):
+            user_input = input("Create 'fig' directory? (Y/n):")
+            if user_input.lower() == 'y' or user_input == '':
+                os.makedirs(fig_dir)
+                print(f"Directory 'fig' has been created.")
+            else:
+                print(f"Creation of directory 'fig' has been canceled.")
         plt.savefig(os.path.join(self.base_dir, "fig", f"color_{os.path.splitext(os.path.basename(tsv_path))[0]}.png"))
 
 
@@ -573,7 +592,16 @@ class VedaMetronome():
             plt.yticks(fontsize=4)
 
         bn = os.path.splitext(os.path.basename(csv_path))[0]
-        img_path = os.path.join(self.base_dir, "fig", f"clustering_{bn}.png")
+
+        fig_dir = os.path.join(self.base_dir, "fig")
+        if not os.path.exists(fig_dir):
+            user_input = input("Create 'fig' directory? (Y/n):")
+            if user_input.lower() == 'y' or user_input == '':
+                os.makedirs(fig_dir)
+                print(f"Directory 'fig' has been created.")
+            else:
+                print(f"Creation of directory 'fig' has been canceled.")
+        img_path = os.path.join(fig_dir, f"clustering_{bn}.png")
         plt.savefig(img_path)
 
 
