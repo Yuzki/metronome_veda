@@ -1,6 +1,5 @@
 .venv
 .env
-utils/__pycache__
-utils/__init__
+__pycache__/
 .vscode
 memo.md
