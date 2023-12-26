@@ -1,3 +1,6 @@
 .venv
-src/rv_book_*.tei
+.env
 utils/__pycache__
+utils/__init__
+.vscode
+memo.md
